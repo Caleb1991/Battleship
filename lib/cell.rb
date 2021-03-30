@@ -18,7 +18,7 @@ class Cell
   end
 
   def fired_upon?
-    
+
   end
 
   def fire_upon
@@ -29,6 +29,6 @@ def render(ships = false)
 #returns string representation of teh
 end
   # def fired_upon?
-  # end
+  #
   # Do we need a variable to define
 end
