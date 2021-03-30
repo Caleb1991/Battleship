@@ -17,11 +17,18 @@ class Cell
     @ship = ship
   end
 
+  def fired_upon?
+    
+  end
+
   def fire_upon
     ship.hit
   end
 
+def render(ships = false)
+#returns string representation of teh
+end
   # def fired_upon?
   # end
-  # Do we need a variable to define 
+  # Do we need a variable to define
 end
