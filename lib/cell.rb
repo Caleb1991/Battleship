@@ -8,9 +8,7 @@ class Cell
 
   def empty?
     @ship == nil
-    #@no_attacks = .
-    #if ship == nil, then fire_upon changes no_attacks to false and empty to Miss
-    #if ship != nil, then fire_upon changes no_attacsk to false and ship.hit is triggered
+
   end
 
   def place_ship(ship)
@@ -18,11 +16,12 @@ class Cell
   end
 
   def fired_upon?
-
+    fired_upon? = false
   end
 
   def fire_upon
     ship.hit
+    fired_upon? = true
   end
 
 def render(ships = false)
