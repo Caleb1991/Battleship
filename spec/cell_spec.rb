@@ -37,30 +37,30 @@ RSpec.describe Cell do
     expect(cell.empty?).to eq(false)
   end
 
-it 'tells when not fired upon' do
-  cruiser = Ship.new("Cruiser", 3)
-  cell = Cell.new("B4")
-  cell.place_ship(cruiser)
+  it 'tells when not fired upon' do
+    cruiser = Ship.new("Cruiser", 3)
+    cell = Cell.new("B4")
+    cell.place_ship(cruiser)
 
 
-  expect(cell.fired_upon?).to eq(false)
-end
+    expect(cell.fired_upon?).to eq(false)
+  end
 
-it 'fires upon' do
-  cell = Cell.new("B4")
-  cruiser = Ship.new("Cruiser", 3)
-  cell.place_ship(cruiser)
-  cell.fire_upon
+  it 'fires upon' do
+    cell = Cell.new("B4")
+    cruiser = Ship.new("Cruiser", 3)
+    cell.place_ship(cruiser)
+    cell.fire_upon
 
-  expect(cell.ship.health).to eq(2)
-end
+    expect(cell.ship.health).to eq(2)
+  end
 
-it 'tells when fired upon' do
-  cell = Cell.new("B4")
-  cruiser = Ship.new("Cruiser", 3)
-  cell.place_ship(cruiser)
-  cell.fire_upon
+  it 'tells when fired upon' do
+    cell = Cell.new("B4")
+    cruiser = Ship.new("Cruiser", 3)
+    cell.place_ship(cruiser)
+    cell.fire_upon
 
-  expect(cell.fired_upon?).to eq(true)
-end
+    expect(cell.fired_upon?).to eq(true)
+  end
 end

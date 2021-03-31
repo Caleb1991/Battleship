@@ -23,11 +23,9 @@ class Cell
   def fire_upon
     ship.hit
     @has_been_hit = true
-
-    # fired_upon? = true
   end
 
-def render(ships = false)
+  def render(ships = false)
 
+  end
 end
-end 
