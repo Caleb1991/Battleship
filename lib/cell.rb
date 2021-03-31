@@ -16,12 +16,16 @@ class Cell
   end
 
   def fired_upon?
+
     fired_upon? = false
+
   end
 
   def fire_upon
+    @ship != nil
     ship.hit
-    fired_upon? = true
+
+    # fired_upon? = true
   end
 
 def render(ships = false)
