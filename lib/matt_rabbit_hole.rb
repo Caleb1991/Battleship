@@ -1,19 +1,41 @@
 
-#for a method in the Cell class
+#to be added the Cell class
+
+require './lib/ship'
+require './lib/cell'
+require 'pry'
+
+cell_condition = {
+  :open_water => ".",
+  :missed_shot => "M",
+  :unhit_ship => "S",
+  :hit_ship => "H",
+  :sunk_ship => "X"
+  }
+
+binding.pry
 
 def render
-  cell_condition = {
-      :open_water => ".",
-      :unhit_ship => "S",
-      :hit_ship => "H",
-      :missed_shot => "M",
-      :sunk_ship => "X"
-      }
-if ship != nil && target != nil && ship.sunk? == true, then condition = sunk_ship
-elsif ship != nil && target != nil && ship.sunk? == false && ship.hit == true, then condition = hit_ship
-elsif ship != nil && target == nil, then condition = unhit_ship
-elsif ship != nil && target != nil, then condition = unhit_ship
-elsif ship == nil && target != nil, then condition = missed_shot
-else ship == nil && target == nil, then condition = open_water
+  if ship != nil
+    if has_been_hit == true
+      if ship.sunk? == true
+        p cell_condition[:sunk_ship]
+      else ship.hit == true
+        p cell_condition[:hit_ship]
+      end
+    else
+      p cell_condition[:unhit_ship]
+    end
+  else
+    if ship == nil
+      if has_been_hit == true
+        p cell_condition[:missed_shot]
+      else
+        p cell_condition[:open_water]
+      end
+    end
+end
+
+binding.pry
 
 end
