@@ -4,6 +4,7 @@ class Cell
   def initialize(coordinate)
     @coordinate = coordinate
     @ship = ship
+    @has_been_hit = false
   end
 
   def empty?
@@ -16,22 +17,17 @@ class Cell
   end
 
   def fired_upon?
-
-    fired_upon? = false
-
+    @has_been_hit
   end
 
   def fire_upon
-    @ship != nil
     ship.hit
+    @has_been_hit = true
 
     # fired_upon? = true
   end
 
 def render(ships = false)
-#returns string representation of teh
+
 end
-  # def fired_upon?
-  #
-  # Do we need a variable to define
-end
+end 
