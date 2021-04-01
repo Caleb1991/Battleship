@@ -15,6 +15,8 @@ attr_reader :name,
   end
 
   def hit
-    @health -= 1
+    if @health >= 1
+      @health -= 1
+    end
   end
 end
