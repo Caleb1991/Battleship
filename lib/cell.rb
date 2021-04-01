@@ -27,6 +27,16 @@ class Cell
   end
 
   def render(ships = false)
-
+    if fired_upon? == false
+      "."
+    elsif ships == true && @occupied == true
+      "S"  
+    elsif fired_upon? == true && @occupied == false
+      "M"
+    elsif fired_upon? == true && @occupied == true
+      "H"
+    else ship.health == 0
+      "X"
+    end
   end
 end

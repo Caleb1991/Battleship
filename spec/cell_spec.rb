@@ -61,4 +61,45 @@ RSpec.describe Cell do
 
     expect(cell.fired_upon?).to eq(true)
   end
+
+  it 'shows a .' do
+    cell = Cell.new("B4")
+
+    expect(cell.render).to eq(".")
+  end
+
+  it 'shows a S' do
+    cell = Cell.new("B4")
+    cruiser = Ship.new("Cruiser", 3)
+    cell.place_ship(cruiser)
+
+    expect(cell.render).to eq("S")
+  end
+
+  it 'shows a M' do
+    cell = Cell.new("B4")
+    cell.fire_upon
+
+    expect(cell.render).to eq("M")
+  end
+
+  it 'shows an H' do
+    cell = Cell.new("B4")
+    cruiser = Ship.new("Cruiser", 3)
+    cell.place_ship(cruiser)
+    cell.fire_upon
+
+    expect(cell.render).to eq("H")
+  end
+
+  it 'shows a X' do
+    cell = Cell.new("B4")
+    cruiser = Ship.new("Cruiser", 3)
+    cell.place_ship(cruiser)
+    cell.fire_upon
+    cell.fire_upon
+    cell.fire_upon
+
+    expect(cell.render).to eq("X")
+  end
 end
