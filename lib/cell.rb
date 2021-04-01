@@ -5,17 +5,16 @@ class Cell
     @coordinate = coordinate
     @occupied = false
     @ship = nil
-    # @has_been_hit = false
+    @has_been_hit = false
   end
 
   def empty?
     @occupied == false
   end
 
-  def place_ship(arg)
+  def place_ship(ship)
     @occupied = true
-    @ship = arg
-    #add/replace with occupied
+    @ship = ship
   end
 
   def fired_upon?
