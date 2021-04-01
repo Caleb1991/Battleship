@@ -73,7 +73,7 @@ RSpec.describe Cell do
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
 
-    expect(cell.render).to eq("S")
+    expect(cell.render(true)).to eq("S")
   end
 
   it 'shows a M' do
@@ -83,7 +83,7 @@ RSpec.describe Cell do
     expect(cell.render).to eq("M")
   end
 
-  it 'shows an H' do
+  it 'shows a H' do
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
