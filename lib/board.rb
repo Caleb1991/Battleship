@@ -46,6 +46,7 @@ class Board
     #if coordinates.each_cons(ship.length) do |coordinate| coordinate == coordinates end #iterate through the array, for every given value, split them, call .ord on the letters (first value) then add them together
       # Take the value I'm given, call each cons on that Will need to turn the number of the string .to_i
       #think about how you can solve it in real life
+      #coordinates.each do |given_coordinate| valid_coordinate(given_coordinate) will need to include this as a check
   end
 
   #tests if the given ship can be entered into the given coordinates
