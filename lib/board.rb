@@ -23,12 +23,24 @@ class Board
       false
     end
   end
+
+  def consequtive_coordinates
+    letters = "A".."D"
+    numbers = "1".."4"
+    coordinate_values = []
+
+    letters.each do |letter|
+      numbers.each do |number|
+        coordinate_values << letter.ord + number.to_i
+      end
+    end
+end
   # if you use an else there will always be a return value, an elsif has the possibility to not have one -Tony 2021
 
 
   def valid_coordinates?(ship, coordinates)
+    coordinate_collection = []
     split_coordinates = []
-    coordinate_values = []
 
     coordinates.each do |coordinate|
       split_coordinates << coordinate.split("")
@@ -37,14 +49,15 @@ class Board
       coordinate_values << letter + number
       split_coordinates.shift
     end
-
-    if coordinate_values.each_cons(ship.length) do |set| set == ???
-      true
-    else
-      false
-    end
+    #will be using each_cons and going through A..Z and 1..26 adding them together and seeing if the coordinate_values occurs in them
+    #
+    # if coordinate_values.each_cons(ship.length) do |set| set == ???
+    #   true
+    # else
+    #   false
+    #end
     #if coordinates.each_cons(ship.length) do |coordinate| coordinate == coordinates end #iterate through the array, for every given value, split them, call .ord on the letters (first value) then add them together
-      # Take the value I'm given, call each cons on that Will need to turn the number of the string .to_i
+      # Take the value I'm given, call each cons on that
       #think about how you can solve it in real life
       #coordinates.each do |given_coordinate| valid_coordinate(given_coordinate) will need to include this as a check
   end
