@@ -37,10 +37,8 @@ class Cell
       "M"
     elsif ship.health == 0
       "X"
-    else
-      fired_upon? == true && @occupied == true
+    elsif fired_upon? == true && @occupied == true
       "H"
-
     end
   end
 end
