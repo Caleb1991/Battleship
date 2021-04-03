@@ -24,31 +24,71 @@ class Board
     end
   end
 
-  def consequtive_coordinates
-    letters = "A".."D"
-    numbers = "1".."4"
-    coordinate_values = []
+  def all_same?(array_value)
+    array_value.each_cons(2).all? { |one, two| one == two }
+  end
 
-    letters.each do |letter|
-      numbers.each do |number|
-        coordinate_values << letter.ord + number.to_i
+  def sequential?(array_value)
+    array_value.each_cons(2).all? { |one, two| one == two - 1 }
+  end
+
+  def tests_empty(coordinates)
+    coordinates.all? do |coordinate|
+        @cells[coordinate].empty?
       end
     end
-end
-  # if you use an else there will always be a return value, an elsif has the possibility to not have one -Tony 2021
 
+  def valid_placement?(ship, coordinates)
+    numbers = []
+    letters = []
 
-  def valid_coordinates?(ship, coordinates)
-    coordinate_collection = []
-    split_coordinates = []
+    if ship.length != coordinates.length
+      return false
+    else
+      return true
+    end
 
     coordinates.each do |coordinate|
-      split_coordinates << coordinate.split("")
-      letter = split_coordinates[0][0].ord
-      number = split_coordinates[0][1].to_i
-      coordinate_values << letter + number
-      split_coordinates.shift
+    if valid_coordinate(coordinate) == true
+      return true
+    else
+      return false
     end
+    end
+
+    coordinates.each do |coordinate|
+      letters << coordinate.slice!(0).ord
+      numbers << coordinate.to_i
+    end
+
+    if all_same?(numbers) && sequential?(letters)
+      return true
+    elsif all_same?(letters) && sequential?(numbers)
+      return true
+    else
+      return false
+    end
+  end
+
+  # def check_empty(this)
+  #   this.each.all? do |coordinate| @cells[coordinate].empty? == true end
+  # end
+
+  def ship_place_helper(ship, other)
+    other.each do |coordinate| (@cells[coordinate]).place_ship(ship)
+    end
+  end
+
+  def place(ship, array)
+
+    if valid_placement?(ship, array) && tests_empty(array)
+      ship_place_helper(ship, array)
+      return true
+    else
+      return false
+  end
+end
+end
     #will be using each_cons and going through A..Z and 1..26 adding them together and seeing if the coordinate_values occurs in them
     #
     # if coordinate_values.each_cons(ship.length) do |set| set == ???
@@ -60,7 +100,7 @@ end
       # Take the value I'm given, call each cons on that
       #think about how you can solve it in real life
       #coordinates.each do |given_coordinate| valid_coordinate(given_coordinate) will need to include this as a check
-  end
+
 
   #tests if the given ship can be entered into the given coordinates
   #will reference the ships length, whether the coordinates are an acceptable range
@@ -68,12 +108,13 @@ end
   #returns boolean value
 
 
-  def place(ship, coordinates)
+
     #will use valid_coordinates in here
     #if valid coordinates == true && no ship already (possibly method that turns valid coordinate to false)
     # place ship at coordinates
-  end
-end
+
+
+
 
 
 
