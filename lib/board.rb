@@ -24,12 +24,12 @@ class Board
     end
   end
 
-  def all_same?(array_value)
-    array_value.each_cons(2).all? { |one, two| one == two }
+  def all_same?(letters_or_numbers)
+    letters_or_numbers.each_cons(2).all? { |one, two| one == two }
   end
 
-  def sequential?(array_value)
-    array_value.each_cons(2).all? { |one, two| one == two - 1 }
+  def sequential?(letters_or_numbers)
+    letters_or_numbers.each_cons(2).all? { |one, two| one == two - 1 }
   end
 
   def tests_empty(coordinates)
@@ -70,62 +70,26 @@ class Board
     end
   end
 
-  # def check_empty(this)
-  #   this.each.all? do |coordinate| @cells[coordinate].empty? == true end
-  # end
-
-  def ship_place_helper(ship, other)
-    other.each do |coordinate| (@cells[coordinate]).place_ship(ship)
+  def ship_place_helper(ship, coordinates)
+    coordinates.each do |coordinate| (@cells[coordinate]).place_ship(ship)
     end
   end
 
-  def place(ship, array)
+  def place(ship, coordinates)
 
-    if valid_placement?(ship, array) && tests_empty(array)
-      ship_place_helper(ship, array)
+    if valid_placement?(ship, coordinates) && tests_empty(coordinates)
+      ship_place_helper(ship, coordinates)
       return true
     else
       return false
+    end
+  end
+
+  def render
+
+    test = [@cells.values]
+    test.map do |cell| cell.render
+    end
+#will be calling on the value for each cell.render
   end
 end
-end
-    #will be using each_cons and going through A..Z and 1..26 adding them together and seeing if the coordinate_values occurs in them
-    #
-    # if coordinate_values.each_cons(ship.length) do |set| set == ???
-    #   true
-    # else
-    #   false
-    #end
-    #if coordinates.each_cons(ship.length) do |coordinate| coordinate == coordinates end #iterate through the array, for every given value, split them, call .ord on the letters (first value) then add them together
-      # Take the value I'm given, call each cons on that
-      #think about how you can solve it in real life
-      #coordinates.each do |given_coordinate| valid_coordinate(given_coordinate) will need to include this as a check
-
-
-  #tests if the given ship can be entered into the given coordinates
-  #will reference the ships length, whether the coordinates are an acceptable range
-  #will need to look out for no diagonals, no skipping (A1, A2, A4)
-  #returns boolean value
-
-
-
-    #will use valid_coordinates in here
-    #if valid coordinates == true && no ship already (possibly method that turns valid coordinate to false)
-    # place ship at coordinates
-
-
-
-
-
-
-  # valid_placement CEO method that tells others to go do work and I'll make determinations
-  # every method deserves a test
-  #try and place ships by next checkin (paticular combination that will error)
-  # some validation tools in iteration 2
-  # rendering board 'spend way too much time testing render method', so get fresh set of eyes
-  #reach out to Megan and she will give fresh set of eyes to render board
-  #starting loop how do I get out 'all ships are sunk? == true'
-  # all ships sunk as a method that returns sunk? ==true for all ships
-  #will end up with more classes than outlined 'iteration three' player class (that has player or computer)
-  # or player and computer class
-  #think about how many of each thing do you need when heading into iteration 3
