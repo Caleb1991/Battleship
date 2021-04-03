@@ -87,8 +87,7 @@ class Board
 
   def render
 
-    test = [@cells.values]
-    test.map do |cell| cell.render
+    @cells.values.map do |value| value.render
     end
 #will be calling on the value for each cell.render
   end
