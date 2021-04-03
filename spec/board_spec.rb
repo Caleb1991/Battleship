@@ -50,7 +50,7 @@ RSpec.describe Board do
     expect(board.valid_placement?(ship, ["A1", "A2", "A3"])).to eq (true)
   end
 
-  it ' valid coordinates returns false' do
+  it 'valid coordinates returns false' do
     board = Board.new
     ship = Ship.new("Crusier", 3)
 
@@ -109,5 +109,11 @@ RSpec.describe Board do
     board.place(cruiser, ["A1", "A2", "A3"])
 
     expect(board.place(destroyer, ["A1", "A2", "A3"])).to eq(false)
+  end
+
+  it 'renders a board' do
+    board = Board.new
+    board.render
+    require 'pry'; binding.pry
   end
 end
