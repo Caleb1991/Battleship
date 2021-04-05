@@ -19,24 +19,38 @@ class Computer
     @computer_sub = Ship.new('Submarine', 2)
     @computer_board = Board.new
     @fire_coordinates = @computer_board.cells.keys
-    @ship_coordinates = []
+    @cruiser_ship_coordinates = []
+    @sub_ship_coordinates = []
   end
 
-  def create_ship_coordinates
-    @fire_coordinates.each_cons(3) { |a| @ship_coordinates << a}
+  def create_horizontal_cruiser_coordinates
+    @fire_coordinates.each_cons(3) { |pair| @cruiser_ship_coordinates << pair}
   end
-  
-  def place_cruiser
-    possible = @fire_coordinates.sample(3)
-    loop do
-      @computer_board.valid_placement?(@computer_cruiser, [possible])
-      possible = @fire_coordinates.sample(3)
-      if @computer_board.valid_placement?(@computer_cruiser, [possible]) == true
-        @computer_board.place(@computer_cruiser, [possible])
-        break
-      end
+
+  def create_vertical_crusier_coordinates
+    vertical = @fire_coordinates.sort_by do |coordinate|
+      coordinate[1]
     end
+    vertical.each_cons(3) { |pair| @cruiser_ship_coordinates << pair}
   end
+
+  def create_horizontal_sub_coordinates
+    @fire_coordinates.each_cons(2) { |pair| @sub_ship_coordinates << pair}
+  end
+
+  def create_vertical_sub_coordinates
+    vertical = @fire_coordinates.sort_by do |coordinate|
+      coordiante[1]
+    end
+    vertical.each_cons(2) { |pair| @sub_ship_coordinates << pair}
+  end
+
+  def place_cruiser
+    @computer_board.valid_placement?(@computer_cruiser, coordinates = @cruiser_ship_coordinates.sample)
+    @computer_board.place_ship(@computer_cruiser, coordinates)
+  end
+
+
 
   def fire
     choice = @fire_coordinates.sample
