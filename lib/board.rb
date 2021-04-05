@@ -1,6 +1,3 @@
-require './lib/cell'
-require './lib/ship'
-
 class Board
   attr_reader :cells
 
@@ -85,10 +82,12 @@ class Board
     end
   end
 
-  def render
-
-    @cells.values.map do |value| value.render
-    end
-#will be calling on the value for each cell.render
+  def render(ships = false)
+    cell_values = []
+ p " 1 2 3 4 \n" +
+   "A #{@cells.values[0].render(ships)} #{@cells.values[1].render(ships)} #{@cells.values[2].render(ships)} #{@cells.values[3].render(ships)} \n" +
+   "B #{@cells.values[4].render(ships)} #{@cells.values[5].render(ships)} #{@cells.values[6].render(ships)} #{@cells.values[7].render(ships)} \n" +
+   "C #{@cells.values[8].render(ships)} #{@cells.values[9].render(ships)} #{@cells.values[10].render(ships)} #{@cells.values[11].render(ships)} \n" +
+   "D #{@cells.values[12].render(ships)} #{@cells.values[13].render(ships)} #{@cells.values[14].render(ships)} #{@cells.values[15].render(ships)} \n"
   end
 end
