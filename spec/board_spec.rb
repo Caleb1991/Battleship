@@ -74,6 +74,7 @@ RSpec.describe Board do
     board = Board.new
     ship = Ship.new("Crusier", 3)
     destroyer = Ship.new("Destroyer", 3)
+
     board.place(ship, ["A1", "A2", "A3"])
 
     expect(board.tests_empty(["A1", "A2", "A3"])).to eq(false)
