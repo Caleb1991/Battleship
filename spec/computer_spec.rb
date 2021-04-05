@@ -10,4 +10,10 @@ RSpec.describe Computer do
 
     expect(computer).to be_an_instance_of(Computer)
   end
+
+  it 'has a name' do
+    computer = Computer.new
+
+    expect(computer.name).to eq('Roald')
+  end
 end
