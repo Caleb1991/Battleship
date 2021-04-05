@@ -19,14 +19,8 @@ class Computer
     @computer_board = Board.new
     @fire_coordinates = @computer_board.cells.keys
   end
-  #
-  # def available_coordinates_fire
-  #   fire = @computer_board.cells.keys
-  # end
 
-  # def available_coordinates_ship_placement
-  #   ship_array = @computer_board.cells.keys
-  # end
+  def place_cruiser
 
   def place_ships
     consecutive = available_coordinates
