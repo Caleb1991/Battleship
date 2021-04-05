@@ -31,6 +31,8 @@ class Cell
   def render(ships = false)
     if fired_upon? == false && @occupied == false
       "."
+    elsif fired_upon? == false && @occupied == true && ships == false
+      "."
     elsif ships == true && @occupied == true && fired_upon? != true
       "S"
     elsif fired_upon? == true && @occupied == false
@@ -38,7 +40,7 @@ class Cell
     elsif ship.health == 0
       "X"
     elsif fired_upon? == true && @occupied == true
-      # look at the possibilities for if a ship is there and if one isn't 
+      # look at the possibilities for if a ship is there and if one isn't
       "H"
     end
   end
