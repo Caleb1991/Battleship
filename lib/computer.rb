@@ -9,7 +9,8 @@ class Computer
               :fire_coordinates,
               :computer_board,
               :computer_cruiser,
-              :computer_sub
+              :computer_sub,
+              :ship_coordinates
 
 
   def initialize
@@ -18,13 +19,23 @@ class Computer
     @computer_sub = Ship.new('Submarine', 2)
     @computer_board = Board.new
     @fire_coordinates = @computer_board.cells.keys
+    @ship_coordinates = []
   end
 
+  def create_ship_coordinates
+    @fire_coordinates.each_cons(3) { |a| @ship_coordinates << a}
+  end
+  
   def place_cruiser
-
-  def place_ships
-    consecutive = available_coordinates
-    #each_cons
+    possible = @fire_coordinates.sample(3)
+    loop do
+      @computer_board.valid_placement?(@computer_cruiser, [possible])
+      possible = @fire_coordinates.sample(3)
+      if @computer_board.valid_placement?(@computer_cruiser, [possible]) == true
+        @computer_board.place(@computer_cruiser, [possible])
+        break
+      end
+    end
   end
 
   def fire
