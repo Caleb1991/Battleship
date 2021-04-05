@@ -23,6 +23,10 @@ puts board.render
 
 board.cells["C2"].fire_upon
 board.cells["C3"].fire_upon
+
+puts board.render
+puts board.render(true)
+
 board.cells["C4"].fire_upon
 
 puts board.render
