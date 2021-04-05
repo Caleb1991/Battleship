@@ -113,7 +113,9 @@ RSpec.describe Board do
 
   it 'renders a board' do
     board = Board.new
-    board.render
-    require 'pry'; binding.pry
+
+    render = " 1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+
+    expect(board.render).to eq(render)
   end
 end
