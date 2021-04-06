@@ -40,7 +40,7 @@ class Computer
 
   def create_vertical_sub_coordinates
     vertical = @fire_coordinates.sort_by do |coordinate|
-      coordiante[1]
+      coordinate[1]
     end
     vertical.each_cons(2) { |pair| @sub_ship_coordinates << pair}
   end
