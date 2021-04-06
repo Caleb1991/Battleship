@@ -59,12 +59,4 @@ class Computer
     end
     @computer_board.place(@computer_sub, coordinates)
   end
-
-  def fire
-    choice = @fire_coordinates.sample
-
-    @computer_board.cells[choice].fire_upon
-    @fire_coordinates.delete(choice)
-    #need to fire on player's board not theirs
-  end
 end
