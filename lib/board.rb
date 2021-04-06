@@ -35,35 +35,35 @@ class Board
       end
     end
 
+    def ship_length_match?(ship, coordinates)
+      if ship.length == coordinates.length
+       true
+      else
+       false
+      end
+    end
+
+    def coordinates_exist?(coordinates)
+      coordinates.all? do |coordinate|
+      valid_coordinate(coordinate) == true
+      end
+    end
+
   def valid_placement?(ship, coordinates)
     numbers = []
     letters = []
 
-    if ship.length != coordinates.length
-      return false
-    else
-      return true
-    end
-
     coordinates.each do |coordinate|
-    if valid_coordinate(coordinate) == true
-      return true
-    else
-      return false
-    end
+      letters << coordinate.chars.first.ord
+      numbers << coordinate.chars.last.to_i
     end
 
-    coordinates.each do |coordinate|
-      letters << coordinate.slice!(0).ord
-      numbers << coordinate.to_i
-    end
-
-    if all_same?(numbers) && sequential?(letters)
-      return true
-    elsif all_same?(letters) && sequential?(numbers)
-      return true
+    if ship_length_match?(ship, coordinates) && coordinates_exist?(coordinates) && all_same?(numbers) && sequential?(letters)
+     return true
+    elsif ship_length_match?(ship, coordinates) && coordinates_exist?(coordinates) && all_same?(letters) && sequential?(numbers)
+     return true
     else
-      return false
+     return false
     end
   end
 
