@@ -1,9 +1,3 @@
-require './lib/board'
-require './lib/cell'
-require './lib/game'
-require './lib/player'
-require './lib/ship'
-
 class Computer
   attr_reader :name,
               :fire_coordinates,
