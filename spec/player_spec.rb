@@ -45,7 +45,7 @@ RSpec.describe Player do
   it 'fires on computer board' do
     player = Player.new
     computer = Computer.new
-
+    require 'pry';binding.pry
     player.fire('A1')
 
     expect(computer.computer_board.cells['A1'].fired_upon?).to eq(true)
