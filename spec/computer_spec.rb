@@ -130,13 +130,4 @@ RSpec.describe Computer do
 
     expect(computer.sub_ship_coordinates).to eq(expected)
   end
-
-  it 'fires' do
-    computer = Computer.new
-    current_coordiantes = computer.fire_coordinates.length
-
-    computer.fire
-
-    expect(current_coordiantes).to eq(computer.fire_coordinates.length + 1)
-  end
 end
