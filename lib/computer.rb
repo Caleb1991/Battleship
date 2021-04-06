@@ -27,7 +27,7 @@ class Computer
     @fire_coordinates.each_cons(3) { |pair| @cruiser_ship_coordinates << pair}
   end
 
-  def create_vertical_crusier_coordinates
+  def create_vertical_cruiser_coordinates
     vertical = @fire_coordinates.sort_by do |coordinate|
       coordinate[1]
     end
@@ -46,8 +46,10 @@ class Computer
   end
 
   def place_cruiser
-    @computer_board.valid_placement?(@computer_cruiser, coordinates = @cruiser_ship_coordinates.sample)
-    @computer_board.place_ship(@computer_cruiser, coordinates)
+    until @computer_board.valid_placement?(@computer_cruiser, coordinates = @cruiser_ship_coordinates.sample)
+      loop
+    end
+    @computer_board.place(@computer_cruiser, coordinates)
   end
 
 
