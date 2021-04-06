@@ -58,9 +58,9 @@ class Board
       numbers << coordinate.chars.last.to_i
     end
 
-    if ship_length_match?(ship, coordinates) && coordinates_exist?(coordinates) && all_same?(numbers) && sequential?(letters)
+    if ship_length_match?(ship, coordinates) && coordinates_exist?(coordinates) && tests_empty(coordinates) && all_same?(numbers) && sequential?(letters)
      return true
-    elsif ship_length_match?(ship, coordinates) && coordinates_exist?(coordinates) && all_same?(letters) && sequential?(numbers)
+    elsif ship_length_match?(ship, coordinates) && coordinates_exist?(coordinates) && tests_empty(coordinates) && all_same?(letters) && sequential?(numbers)
      return true
     else
      return false
@@ -74,7 +74,7 @@ class Board
 
   def place(ship, coordinates)
 
-    if valid_placement?(ship, coordinates) && tests_empty(coordinates)
+    if valid_placement?(ship, coordinates)
       ship_place_helper(ship, coordinates)
       return true
     else
