@@ -29,19 +29,4 @@ class Player
       true
     end
   end
-
-  def fire(coordinate)
-    if @computer_board.cells[coordinate].fired_upon == false
-      @computer_board.cells[coordinate].fire_upon
-      true
-    else
-      puts 'Sorry, that coordinate does not exist, or has already been fired upon, please enter another'
-      false
-  end
-
-
-
-  end
 end
-#player needs to be able to:
-#take shots
