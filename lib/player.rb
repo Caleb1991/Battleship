@@ -32,5 +32,4 @@ class Player
   end
 end
 #player needs to be able to:
-#set ships
 #take shots
