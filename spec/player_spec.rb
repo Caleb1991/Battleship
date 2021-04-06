@@ -41,4 +41,13 @@ RSpec.describe Player do
 
     expect(player.place_sub(['A1', 'A2'])).to eq(true)
   end
+
+  it 'fires on computer board' do
+    player = Player.new
+    computer = Computer.new
+
+    player.fire('A1')
+
+    expect(computer.computer_board.cells['A1'].fired_upon?).to eq(true)
+  end
 end
