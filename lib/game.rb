@@ -1,9 +1,3 @@
-require './lib/cell'
-require './lib/game'
-require './lib/player'
-require './lib/ship'
-require './lib/computer'
-
 class Game
 
   def initialize
