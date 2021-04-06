@@ -52,6 +52,14 @@ class Computer
     @computer_board.place(@computer_cruiser, coordinates)
   end
 
+  def place_sub
+    until @computer_board.valid_placement?(@computer_sub, coordinates = @sub_ship_coordinates.sample)
+      loop
+    end
+    @computer_board.place(@computer_sub, coordinates)
+  end
+
+
 
 
   def fire
