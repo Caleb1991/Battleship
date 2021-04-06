@@ -10,13 +10,12 @@ class Player
   end
 
   def place_cruiser(coordinates, ship = @player_cruiser)
-    if @player_board.valid_placement?(ship, coordinates) != true
-      puts 'Sorry, those coordinates are invalid, please try again'
-      false
-    else
-      puts 'Your cruiser has been set'
+    if @player_board.valid_placement?(ship, coordinates)
       @player_board.place(ship, coordinates)
       true
+    else
+      puts 'Sorry, those coordinates are invalid, please try again'
+      false
       end
   end
 
