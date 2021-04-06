@@ -29,39 +29,32 @@ RSpec.describe Board do
     expect(board.valid_coordinate("Z33")).to eq(false)
   end
 
-  it 'returns true when given the correct numvber of coordinates' do
+  it 'returns true when given the correct number of coordinates' do
     board = Board.new
     ship = Ship.new("Crusier", 3)
 
-    expect(board.valid_placement?(ship, ["A1", "A2", "A3"])).to eq(true)
+    expect(board.ship_length_match?(ship, ["A1", "A2", "A3"])).to eq(true)
   end
 
   it 'returns false when given the incorrect number of coordinates' do
     board = Board.new
     ship = Ship.new("Crusier", 3)
 
-    expect(board.valid_placement?(ship, ["A1", "A2"])).to eq(false)
+    expect(board.ship_length_match?(ship, ["A1", "A2"])).to eq(false)
   end
 
   it 'valid coordinate returns true' do
     board = Board.new
     ship = Ship.new("Crusier", 3)
 
-    expect(board.valid_placement?(ship, ["A1", "A2", "A3"])).to eq (true)
+    expect(board.coordinates_exist?(["A1", "A2", "A3"])).to eq (true)
   end
 
-  it 'valid coordinates returns false' do
+  it 'invalid coordinates returns false' do
     board = Board.new
     ship = Ship.new("Crusier", 3)
 
-    expect(board.valid_placement?(ship, ["A1", "A2", "A3"])).to eq (true)
-  end
-
-  it 'checks if cell is empty' do
-    board = Board.new
-    ship = Ship.new("Crusier", 3)
-
-    expect(board.valid_placement?(ship, ["A1", "A2", "A3"])).to eq(true)
+    expect(board.coordinates_exist?(["A1", "A2", "A3"])).to eq (true)
   end
 
   it 'tests if cell is empty' do
@@ -115,7 +108,7 @@ RSpec.describe Board do
   it 'renders a board' do
     board = Board.new
 
-    render = " 1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+    render = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
 
     expect(board.render).to eq(render)
   end
