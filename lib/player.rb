@@ -16,7 +16,7 @@ class Player
     else
       puts 'Sorry, those coordinates are invalid, please try again'
       false
-      end
+    end
   end
 
   def place_sub(coordinates, ship = @player_sub)
