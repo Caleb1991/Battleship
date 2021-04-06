@@ -73,7 +73,6 @@ class Board
   end
 
   def place(ship, coordinates)
-
     if valid_placement?(ship, coordinates)
       ship_place_helper(ship, coordinates)
       return true
