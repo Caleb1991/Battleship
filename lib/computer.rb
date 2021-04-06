@@ -10,7 +10,8 @@ class Computer
               :computer_board,
               :computer_cruiser,
               :computer_sub,
-              :ship_coordinates
+              :cruiser_ship_coordinates,
+              :sub_ship_coordinates
 
 
   def initialize
