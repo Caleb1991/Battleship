@@ -2,6 +2,7 @@ require './lib/board'
 require './lib/cell'
 require './lib/player'
 require './lib/ship'
+require './lib/computer'
 
 RSpec.describe Player do
 
@@ -29,19 +30,15 @@ RSpec.describe Player do
     expect(player.player_sub.length).to eq(2)
   end
 
-  it 'can place ships' do
+  it 'can place cruiser' do
     player = Player.new
 
-    player.set_cruiser
-    player.set_sub
-
-    expect(player.player_cruiser.).to eq()
-    expect(player.player_sub.).to eq()
+    expect(player.place_cruiser(['A1', 'A2', 'A3'])).to eq(true)
   end
 
-  it 'can fire upon' do
+  it 'can place sub' do
     player = Player.new
 
-    player.fire
+    expect(player.place_sub(['A1', 'A2'])).to eq(true)
   end
 end
