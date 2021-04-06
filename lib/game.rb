@@ -1,5 +1,13 @@
 class Game
 
+def initialize
+  @player_one = Player.new
+  @computer = Computer.new
+end
+
+def main_menu
+
+end
 #this should include things such as a main menu
 # ship placement
 # firing
