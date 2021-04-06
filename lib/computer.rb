@@ -59,9 +59,6 @@ class Computer
     @computer_board.place(@computer_sub, coordinates)
   end
 
-
-
-
   def fire
     choice = @fire_coordinates.sample
 
