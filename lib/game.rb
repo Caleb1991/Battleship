@@ -43,15 +43,19 @@ class Game
        Enter p to play. Enter q to quit."
 
   selection = gets.chomp.upcase
+    until selection == 'P' || selection == 'Q'
+
+      if selection != 'P' || selection != 'Q'
+        puts "That's an invalid selection, please press p to play, or q to quit."
+        selection = gets.chomp.upcase
+        loop
+      end
+    end
 
     if selection == "P"
       ship_placement
-    elsif selection == "Q"
+    else selection == "Q"
       puts   'Farewell'
-    else
-      puts "That's an invalid selection, please try again."
-      selection = gets.chomp
-      main_menu
     end
   end
 
@@ -74,7 +78,7 @@ class Game
     puts 'Your cruiser has been set'
     puts @player_one.player_board.render(true)
 
-    puts "Now lets place our sub! Same rules as before,\n
+    puts "    Now lets place our sub! Same rules as before,
     but this time we only need two coordinates, and they can't overlap with the cruiser!"
 
     until @player_one.place_sub(gets.chomp.split)
@@ -95,7 +99,7 @@ def game_flow
   until @computer.computer_cruiser.health == 0 && @computer.computer_sub.health == 0 || @player_one.player_cruiser.health == 0 && @player_one.player_sub.health == 0
     puts "******* Roald's Board *******"
     puts @computer.computer_board.render
-    puts "\n ******* Your Board *******"
+    puts "\n******* Your Board *******"
     puts @player_one.player_board.render
     puts 'Now where shall attack next?!'
       until player_fire(gets.chomp)
@@ -116,7 +120,7 @@ def game_over
       sleep(4)
     elsif @player_one.player_cruiser.health == 0 && @player_one.player_sub.health == 0
       puts 'They got us this time cap, but I know we can get them next time'
-      puts "\n ******* Your Board *******"
+      puts "\n******* Your Board *******"
       puts @player_one.player_board.render
       sleep(4)
     end
