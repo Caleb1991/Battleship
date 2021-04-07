@@ -11,6 +11,13 @@ class Game
     choice = @computer.fire_coordinates.sample
 
     @player_one.player_board.cells[choice].fire_upon
+    if @player_one.player_board.cells[choice].render == 'M'
+      puts "The enemy fired back at #{choice}! They missed!"
+    elsif @player_one.player_board.cells[choice].render == 'H'
+      puts "The enemy fired back at #{choice}! It was a clean hit captain!"
+    elsif @player_one.player_board.cells[choice].render == 'X'
+      puts "The enemy fired back at #{choice}! One of our ships have been sunk captain!"
+    end
     @computer.fire_coordinates.delete(choice)
   end
 
@@ -21,6 +28,16 @@ class Game
     else
       puts 'Sorry, that coordinate does not exist, or has already been fired upon, please enter another'
       false
+    end
+  end
+
+  def player_shot_feedback(coordinate)
+    if @computer.computer_board.cells[coordinate].render == 'M'
+      puts "Our shot at #{coordinate} missed captain!"
+    elsif @computer.computer_board.cells[coordinate].render == 'H'
+      puts "Our shot at #{coordinate} connected! Capital hit captain!"
+    elsif @computer.computer_board.cells[coordinate].render == 'X'
+      puts "Our shot at #{coordinate} has sunk one of their ships!"
     end
   end
 
@@ -103,10 +120,10 @@ def game_flow
     puts "\n******* Your Board *******"
     puts @player_one.player_board.render
     puts 'Now where shall attack next?!'
-      until player_fire(gets.chomp)
+      until player_fire(shot = gets.chomp)
         loop
       end
-      puts 'The enemy fired back!'
+      player_shot_feedback(shot)
       computer_fire
       end
 
