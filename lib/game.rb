@@ -1,4 +1,6 @@
 class Game
+  attr_reader :player_one,
+              :computer
 
   def initialize
     @player_one = Player.new
@@ -21,7 +23,6 @@ class Game
       false
     end
   end
-
 
   def new_game
     @player_one = Player.new
@@ -61,8 +62,8 @@ class Game
     and they are yours to command! First is our cruiser! Coming in at three coordinates\n
     long it'll serve ya well! Now, where shall we put it?! I'll need three coordinates,\n
     and you can see the board below a combination of a letter and a number from A1 to D4,\n
-    and they'll need to be consecutive whether horizontally (A1, A2, A3)\n
-    or vertically (A1, B1, C1). Captain, where to?!\n"
+    and they'll need to be consecutive whether horizontally: A1 A2 A3\n
+    or vertically: A1 B1 C1. Captain, where to?!\n"
 
     puts @player_one.player_board.render
 
