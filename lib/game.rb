@@ -39,8 +39,9 @@ class Game
   end
 
   def main_menu
-    puts "Welcome to....!@!@ Battleship @!@! \n
-       Enter p to play. Enter q to quit."
+    puts "Welcome to....\n
+    !@!@ Battleship @!@! \n
+    Enter p to play. Enter q to quit."
 
   selection = gets.chomp.upcase
     until selection == 'P' || selection == 'Q'
