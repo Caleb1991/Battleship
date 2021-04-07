@@ -125,13 +125,20 @@ def game_over
 
   selection = gets.chomp.upcase
 
+    until selection == 'Y' || selection == 'N'
+      if selection != 'Y' && selection != 'N'
+        puts "Again that's Y for yes and N for no"
+      end
+
+      selection = gets.chomp.upcase
+      loop
+    end
+
     if selection == 'Y'
       new_game
       ship_placement
     elsif selection == 'N'
       puts 'Farewell'
-    else selection != 'Y' && selection != 'N'
-      puts "Again that's Y for yes and N for no"
     end
   end
 end
