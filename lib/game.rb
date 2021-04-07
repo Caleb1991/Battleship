@@ -55,14 +55,14 @@ class Game
   end
 
   def ship_placement
-    puts   "Greetings hero! It appears you woke up on the wrong side of the deck today!\n
-        Alas, we have no time to talk! The Dread Pirate Rob.... I'm sorry, Roald\n
-        has ammassed their ships in the waters over yonder. We have but two in our fleet,\n
-        and they are yours to command! First is our cruiser! Coming in at three coordinates long\n
-        it'll serve ya well! Now, where shall we put it?! I'll need three coordinates, and you can see the board below\n
-         a combination of a letter and a number from A1 to D4,\n
-          and they'll need to be consecutive whether horizontally\n
-        (A1, A2, A3) or vertically (A1, B1, C1). Captain, where to?!"
+    puts"\n    Greetings hero! It appears you woke up on the wrong side of the deck today!\n
+    Alas, we have no time to talk! The Dread Pirate Rob.... I'm sorry, Roald\n
+    has ammassed their ships in the waters over yonder. We have but two in our fleet,\n
+    and they are yours to command! First is our cruiser! Coming in at three coordinates\n
+    long it'll serve ya well! Now, where shall we put it?! I'll need three coordinates,\n
+    and you can see the board below a combination of a letter and a number from A1 to D4,\n
+    and they'll need to be consecutive whether horizontally (A1, A2, A3)\n
+    or vertically (A1, B1, C1). Captain, where to?!\n"
 
     puts @player_one.player_board.render
 
