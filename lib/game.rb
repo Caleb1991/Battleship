@@ -111,8 +111,14 @@ end
 def game_over
     if @computer.computer_cruiser.health == 0 && @computer.computer_sub.health == 0
       puts 'We got Roald! Congratulations captain!'
+      puts "******* Roald's Board *******"
+      puts @computer.computer_board.render
+      sleep(4)
     elsif @player_one.player_cruiser.health == 0 && @player_one.player_sub.health == 0
       puts 'They got us this time cap, but I know we can get them next time'
+      puts "\n ******* Your Board *******"
+      puts @player_one.player_board.render
+      sleep(4)
     end
 
   puts 'Play again? Y for yes and N for no.'
